@@ -73,6 +73,12 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1/users", users);
 app.use("/api/v1/reviews", reviews);
 
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .json({ success: true, message: "Welcome to the DevCamper API" });
+});
+
 app.use(errorHandler);
 
 module.exports = app; // 👈 xuất app thay vì listen

@@ -15,7 +15,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
 // @route     GET /api/v1/bootcamps/:id
 // @access    Public
 exports.getBootcamp = asyncHandler(async (req, res, next) => {
-  const bootcamp1 = await Bootcamp.getBootcampById(req.params.id);
+  //  const bootcamp1 = await Bootcamp.getBootcampById(req.params.id);
   const bootcamp = await Bootcamp.findById(req.params.id);
   console.log(bootcamp.getSummary());
 

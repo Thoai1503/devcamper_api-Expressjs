@@ -75,7 +75,7 @@ app.use("/api/v1/reviews", reviews);
 
 app.use(errorHandler);
 
-app.get("/", (req, res) => {
+app.get("/hello", (req, res) => {
   res.json({ message: "Hello Vercel" });
 });
 

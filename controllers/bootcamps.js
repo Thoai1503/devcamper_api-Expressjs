@@ -18,7 +18,7 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
   //  const bootcamp1 = await Bootcamp.getBootcampById(req.params.id);
   const bootcamp = await Bootcamp.findById(req.params.id);
   console.log(bootcamp.getSummary());
-
+  bootcamp = JSON.stringify(bootcamp);
   if (!bootcamp) {
     return next(
       new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)

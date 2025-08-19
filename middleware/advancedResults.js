@@ -50,8 +50,12 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   }
 
   // Executing query
-  const results = await query;
-
+  let data = new Array();
+  let results = await query;
+  for (let i = 0; i < results.length; i++) {
+    results[i] = JSON.parse(JSON.stringify(results[i]._doc));
+    data.push(results[i]);
+  }
   // Pagination result
   const pagination = {};
 
@@ -68,12 +72,13 @@ const advancedResults = (model, populate) => async (req, res, next) => {
       limit,
     };
   }
-
+  results = JSON.stringify(results);
+  console.log("Results: ", results);
   res.advancedResults = {
     success: true,
     count: results.length,
     pagination,
-    data: results,
+    data: data,
   };
 
   next();
